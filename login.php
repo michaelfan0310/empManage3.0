@@ -26,9 +26,9 @@
 
   <?php
     //错误类型处理
-    if( !empty( $_GET["error"] ) ){
+    if( !empty( $_GET["errno"] ) ){
         
-      $err = $_GET["error"];
+      $err = $_GET["errno"];
       
       if( $err == 1 ){
         echo "<script type='text/javascript'>alert('您的用户名或密码错误!');</script>";

@@ -9,6 +9,7 @@
         public $pageNow;
         public $pageCount;
         public $navigate;
+        public $gotoUrl;
     }
     
     

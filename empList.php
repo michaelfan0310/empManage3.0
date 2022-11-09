@@ -19,6 +19,13 @@
 /*     #listContainer{width=100%;  margin: 0 auto; margin-top: 20px; } */
     
   </style>
+  <script type="text/javascript">
+<!--
+         function confirmDel(val){
+            return window.confirm("是否删除Id="+val+"的用户");
+         }
+//-->
+  </script>
 </head>
 
 
@@ -40,18 +47,26 @@
    require_once 'EmpService.class.php';
    require_once 'PageItem.class.php';
 
-
+   $empService= new EmpService();
+   
+//    if(!empty($_GET['flag'])){
+//        $id=$_GET['id'];
+//        $empService->delEmpById($id);       
+//    }
+   
+   
    $pageItem= new PageItem();//引入pageItem
    
-   $pageItem->pageSize=10;
-  
+   $pageItem->pageSize=10;  
    $pageItem->pageNow=1;
+   $pageItem->gotoUrl="empList.php";
+   
    //empty 函数很重要；
    if(!empty($_GET['pageNow'])){
        $pageItem->pageNow=$_GET['pageNow'];
    }
    
-   $empService= new EmpService();
+  
    
    $empService->getPaging($pageItem);
    
@@ -62,50 +77,15 @@
     echo ' <table border=1 bordercolor="lightgreen" cellspacing="0px" width="80%;">';
     echo "<tr>        
         <td>{$row['id']}</td><td>{$row['name']}</td><td>{$row['email']}</td><td>{$row['phone']}</td>".
-        "<td><a>修改员工</a></td><td><a>删除员工</a></td>
+        "<td><a>修改员工</a></td>
+        <td><a onclick='return confirmDel({$row['id']})' href='empProcess.php?flag=del&id={$row['id']}'>删除员工</a></td>
       </tr>";
     echo " </table >";
     }
     
     echo $pageItem->navigate;
     
-//     //显示 上一页、下一页
-//     if($pageItem->pageNow>1){
-//         $prePage=$pageItem->pageNow-1;
-       
-//         echo "<a href='empList.php?pageNow=$prePage'> 上一页&nbsp;</a>";   
-//     }
-    
-//     if ($pageItem->pageNow<$pageItem->pageCount){
-//         $nextPage=$pageItem->pageNow+1;
-//         echo "<a href='empList.php?pageNow=$nextPage'> 下一页&nbsp;&nbsp;</a>";}
-     
-//      $page_whole=10;
-//      $start= floor(($pageItem->pageNow-1)/$page_whole) *$page_whole + 1; 
-//      $index=$start;
-     
-//      if($pageItem->pageNow>$page_whole){
-//          echo "<a href='empList.php?pageNow=".($start-1)."'>&nbsp;<<&nbsp;&nbsp;</a>";
-//      }
-     
-//      for(;$start<$index+$page_whole;$start++){
-//          echo "<a href='empList.php?pageNow=$start'>[$start]</a>";
-//      }
-//         //整体10页翻动；
-      
-        
-//         echo "<a href='empList.php?pageNow=$start'>&nbsp;&nbsp;>>&nbsp;</a>";
-        
-        
 
-        
-//         echo "&nbsp;当前页 $pageItem->pageNow/共有 $pageItem->pageCount 页"; 
-
-
-// mysqli_free_result($res1);
-// mysqli_free_result($res2);
-
-// mysqli_close($sqlHelper->conn);
 ?>
 
 <form action="empList.php" >

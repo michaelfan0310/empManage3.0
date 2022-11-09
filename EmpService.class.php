@@ -3,7 +3,8 @@
     require_once 'SqlHelper.class.php';
     
     class EmpService{
-      //第一种分页方法 
+        
+            //第一种分页方法 
       function getPageCount($pageSize){
         
         $sql="select count(id) from employees_basic";
@@ -44,6 +45,21 @@
          $sql2="select count(id) from employees_basic";
          
          $sqlHelper->execute_dql_page($sql1, $sql2, $pageItem);
+         $sqlHelper->close_connect();
+     }
+     function delEmpById($id){
+         $sqlHelper=new SqlHelper();
+         $sql="delete from employees_basic where id=$id";
+         
+         $sqlHelper->execute_dml($sql);
+         $sqlHelper->close_connect();
+         
+     }
+     function addEmp($name,$email,$phone){
+         $sqlHelper=new SqlHelper();
+         $sql="insert into employees_basic (name,email,phone) values('$name','$email','$phone')";
+         $res=$sqlHelper->execute_dml($sql);   
+         
          $sqlHelper->close_connect();
      }
     }

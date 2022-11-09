@@ -10,7 +10,7 @@
   $password = $_POST["psw"];   
   
   if( empty( $usrid ) || empty( $password) ){
-           header("Location:login.php?error=2&user=$usrid&pswd=$password");
+           header("Location:login.php?errno=2&user=$usrid&pswd=$password");
            exit();
   }
   
@@ -25,7 +25,7 @@
       header("Location: empManage.php?username=$name");
        exit();        
   }else{
-      header("Location: login.php?error=1");
+      header("Location: login.php?errno=1");
         exit();
   }
 

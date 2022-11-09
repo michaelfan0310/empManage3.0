@@ -7,14 +7,14 @@
         
        public $conn;
        public $host="localhost";
-       public $dbname="empManage"; 
+       public $dbname="empManage";
        public $username="root";
-       public $password="*****";
+       public $password="236440Wf!";
        
        public function __construct(){
            $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
            if(!$this->conn){
-               die("连接失败".mysqli_connect_errno());
+               die("连接失败".mysqli_error());
           
                echo "Error: Unable to connect to MySQL." . PHP_EOL;
                echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
@@ -27,13 +27,13 @@
        }
        
        public function execute_dql($sql){
-           $res=mysqli_query($this->conn, $sql) or die(mysqli_error($this->conn));
+           $res=mysqli_query($this->conn, $sql) or die(mysqli_error());
            return $res;                 
        }
 
        public function execute_dql2($sql){
            $arr=array();
-           $res=mysqli_query($this->conn, $sql) or die(mysqli_error($this->conn));
+           $res=mysqli_query($this->conn, $sql) or die(mysqli_error());
            $i=0;
            while ($row=mysqli_fetch_assoc($res)){
                $arr[$i++]=$row;  //$arr[]=$row;语句也可以；
@@ -43,16 +43,19 @@
            return $arr;
        }
        public function execute_dml($sql){
-           $b=mysqli_query($this->conn, $sql);
-           if(!$b){
+           $b=mysqli_query($this->conn, $sql) or die(mysqli_error());
+           
+           if(!$b==1){
                return 0;
-           }else if(mysqli_affected_rows($this->conn) >0){
-                   return 1;//表示执行OK
            }else{
-                  return 2;//表示没有行受到影响
-           }          
-       }
-       
+               if(mysqli_affected_rows($this->conn)>0){
+                  
+                   return 1;  //表示执行OK
+               }else{
+                   return 2;  //表示没有行受到影响
+               }          
+            }
+          }
        
        public function execute_dql_page($sql1,$sql2,&$pageItem){
            
@@ -81,28 +84,28 @@
            if($pageItem->pageNow>1){
                $prePage=$pageItem->pageNow-1;
                
-               $navigate= "<a href='empList.php?pageNow=$prePage'> 上一页&nbsp;</a>";
+               $navigate= "<a href='$pageItem->gotoUrl?pageNow=$prePage'> 上一页&nbsp;</a>";
            }
            
            if ($pageItem->pageNow<$pageItem->pageCount){
                $nextPage=$pageItem->pageNow+1;
-               $navigate.= "<a href='empList.php?pageNow=$nextPage'> 下一页&nbsp;&nbsp;</a>";}
+               $navigate.= "<a href='$pageItem->gotoUrl?pageNow=$nextPage'> 下一页&nbsp;&nbsp;</a>";}
                
            $page_whole=10;
            $start= floor(($pageItem->pageNow-1)/$page_whole) *$page_whole + 1;
            $index=$start;
            
            if($pageItem->pageNow>$page_whole){
-               $navigate.= "<a href='empList.php?pageNow=".($start-1)."'>&nbsp;<<&nbsp;&nbsp;</a>";
+               $navigate.= "<a href='$pageItem->gotoUrl?pageNow=".($start-1)."'>&nbsp;<<&nbsp;&nbsp;</a>";
            }
            
            for(;$start<$index+$page_whole;$start++){
-               $navigate.= "<a href='empList.php?pageNow=$start'>[$start]</a>";
+               $navigate.= "<a href='$pageItem->gotoUrl?pageNow=$start'>[$start]</a>";
            }
            //整体10页翻动；
            
            
-           $navigate.= "<a href='empList.php?pageNow=$start'>&nbsp;&nbsp;>>&nbsp;</a>";
+           $navigate.= "<a href='$pageItem->gotoUrl?pageNow=$start'>&nbsp;&nbsp;>>&nbsp;</a>";
            
            
            

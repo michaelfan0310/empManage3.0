@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,22 +19,28 @@
 </head>
 <img src="./images/dac.png" width="10%" />
 <br/>
-<?php
 
-    $usr=$_GET['username'];
-
-    echo $usr."登录成功！！";
-
-echo "<a href='login.php'>返回重新登录</a><hr/>";
-?>
 <body>
 
-    <h1>系统主界面</h1>
- 
-      <a href="empList.php" target="_self">管理用户</a><br />
-      <a href="addEmp.php" target="_self">添加用户</a><br />
-      <a href="#" target="_self">查询用户</a><br />
-      <a href="#" target="_self">退出系统</a><br />
+    <h1>添加员工</h1>
+    <form method="post" action="empProcess.php">
+    
+     <table >
+      <tr><td>员工号</td><td><input type="text" name="id" /></td></tr>
+      <tr><td>姓&nbsp;名</td><td><input type="text" name="name" /></td></tr>
+      <tr><td>邮&nbsp;件</td><td><input type="text" name="email" /></td></tr>
+      <tr><td>电&nbsp;话</td><td><input type="text" name="phone" /></td></tr>
+      
+      <tr><td><input type="hidden" name="flag" value="addemp" /></td></tr>
+       
+      <tr>
+      <td><input type="submit" value="添加员工" /></td>
+      <td><input type="reset"  value="重新填写" /></td>
+      </tr>
+      
+    </table>
+      
+    </form>
 
 <hr/> 
 <img src="./images/hello.png" width="20%"/>
