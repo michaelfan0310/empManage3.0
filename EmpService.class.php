@@ -79,9 +79,9 @@
          $sqlHelper=new SqlHelper();
          
          $sql="UPDATE employees_basic 
-               SET name='$name',email='$email', phone='$phone'//注意变量string加yinhao
+               SET name='$name',email='$email', phone='$phone'
                WHERE id=$id;";
-         
+         // 注意变量string加引号
          return $sqlHelper->execute_dml($sql);
          
          
