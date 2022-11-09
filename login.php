@@ -11,6 +11,8 @@
 
 <body>
   <div id="loginContainer">
+     <br/>
+    <img src="./images/dac.png" width="15%" />
     <h1>管理员登录</h1>
     <form method="post" action="process.php">
       <p>用户ID&nbsp;

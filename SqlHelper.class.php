@@ -43,7 +43,7 @@
            return $arr;
        }
        public function execute_dml($sql){
-           $b=mysqli_query($this->conn, $sql) or die(mysqli_error());
+           $b=mysqli_query($this->conn, $sql) or die(mysqli_error($this->conn));
            
            if(!$b==1){
                return 0;

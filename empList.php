@@ -77,7 +77,7 @@
     echo ' <table border=1 bordercolor="lightgreen" cellspacing="0px" width="80%;">';
     echo "<tr>        
         <td>{$row['id']}</td><td>{$row['name']}</td><td>{$row['email']}</td><td>{$row['phone']}</td>".
-        "<td><a>修改员工</a></td>
+        "<td><a href='updateEmpUI.php?id={$row['id']}'>修改员工</a></td>
         <td><a onclick='return confirmDel({$row['id']})' href='empProcess.php?flag=del&id={$row['id']}'>删除员工</a></td>
       </tr>";
     echo " </table >";

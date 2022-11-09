@@ -15,13 +15,13 @@ if(!empty($_REQUEST['flag'])){
      
        
        
-        if($empService->delEmpById($id)==2){           
+        if($empService->delEmpById($id)==1){           
         
-               header("Location: error.php");
+               header("Location: ok.php");
                exit();
         }else{ 
 
-                header("Location: ok.php");
+                header("Location: error.php");
                 exit();
             }
   }elseif ($flag=="addemp"){
@@ -31,18 +31,37 @@ if(!empty($_REQUEST['flag'])){
        $phone=$_POST['phone'];
        
        if(empty($id)||$id>1370){
-         $res= $empService->addEmp($name, $email, $phone);
-         if($res==2){
-             
-             header("Location: error.php");
-             exit();
-         }else{
+         $res=$empService->addEmp($name, $email, $phone);
+         if($res==1){
              
              header("Location: ok.php");
              exit();
+            }else{
+             
+             header("Location: error.php");
+             exit();
          }
        }
-  }
+  }elseif ($flag=="updateemp"){
+      $id=$_POST['id'];
+      $name=$_POST['name'];
+      $email=$_POST['email'];
+      $phone=$_POST['phone'];
+      
+      
+          $res=$empService->updateEmp($id,$name, $email, $phone);
+          if($res==1){
+              
+              header("Location: ok.php");
+              exit();
+          }else{
+              
+              header("Location: error.php");
+              exit();
+          }
+      }
+  
+  
 
 }
 

@@ -39,7 +39,7 @@ echo "<a href='login.php'>返回重新登录</a><hr/>";
       <a href="#" target="_self">退出系统</a><br />
 
 <hr/> 
-<img src="./images/hello.png" width="20%"/>
+<img src="./images/hello.png" width="16%"/>
  
 </body>
 </html>
