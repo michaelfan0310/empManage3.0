@@ -1,3 +1,7 @@
+<?php 
+    require_once 'recordVisiting.php';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,25 +12,28 @@
     #loginContainer{ width: 30%; margin: 0 auto; text-align: center; }
   </style>
 </head>
-
 <body>
   <div id="loginContainer">
      <br/>
     <img src="./images/dac.png" width="15%" />
     <h1>管理员登录</h1>
+    
     <form method="post" action="process.php">
+    
       <p>用户ID&nbsp;
-      <input type="text" id="usrid" name="usrid" value="<?php if(isset($_GET['usrid'])) { echo $_GET['usrid']; } ?>" 
-      autofocus="autofocus" /></p>
+      <input type="text" id="usrid" name="usrid"  value="<?php echo getCookieVal("usrid"); ?>" autofocus="autofocus" /></p>
 
       <p>&nbsp;&nbsp;密码&nbsp;&nbsp;&nbsp;
       <input type="password" id="psw" name="psw" value="<?php if(isset($_GET['psw'])) {echo $_GET['psw'];}?>" /></p>
-
+      
+      <input type="checkbox" name="check" value="yes" checked />记住用户ID
       <p><input type="submit" />&nbsp;<input type="reset" /></p>  
     </form>
   </div>
 
   <?php
+
+    
     //错误类型处理
     if( !empty( $_GET["errno"] ) ){
         
@@ -41,6 +48,10 @@
         echo "<br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font color='red' size='3' >用户名或密码不能为空!</font>";
       }
     }
-  ?>
+    
+// <?php echo $_COOKIE['usrid'];
+
+    ?>
+
 </body>
 </html>

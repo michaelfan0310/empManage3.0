@@ -27,7 +27,11 @@
 
     echo $usr."登录成功！！";
 
-echo "<a href='login.php'>返回重新登录</a><hr/>";
+    echo "<a href='login.php'>返回重新登录</a><hr/>";
+    
+    require_once 'recordVisiting.php';
+    
+    recordVisiting();
 ?>
 <body>
 
