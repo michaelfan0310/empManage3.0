@@ -1,5 +1,5 @@
 <?php 
-    require_once 'recordVisiting.php';
+    require_once 'record.php';
 ?>
 
 <!DOCTYPE html>

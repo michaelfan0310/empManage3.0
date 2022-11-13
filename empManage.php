@@ -22,6 +22,10 @@
 <img src="./images/dac.png" width="10%" />
 <br/>
 <?php
+    require_once 'record.php';
+    
+    checkUserValidate();
+    
 
     $usr=$_GET['username'];
 
@@ -29,9 +33,13 @@
 
     echo "<a href='login.php'>返回重新登录</a><hr/>";
     
-    require_once 'recordVisiting.php';
+    
     
     recordVisiting();
+    
+   
+    
+  
 ?>
 <body>
 

@@ -1,6 +1,6 @@
 <?php
 
-function recordVisiting(){
+  function recordVisiting(){
     
     date_default_timezone_set("America/Toronto");
     
@@ -13,14 +13,26 @@ function recordVisiting(){
         setcookie("lastVisit",date("Y-m-d H:i:s"), time()+24*3600*30);
     }
     
-}
+  }
     
-    function getCookieVal($key){
+   function getCookieVal($key){
         if(!empty($_COOKIE[$key])){
             return $_COOKIE[$key];
         }else{
             return "";
         }
 
-}
+    }
+    
+    function checkUserValidate(){
+        
+        session_start();
+        if(empty($_SESSION['loginUser'])){
+            header("Location:login.php?errno=1");
+            exit();
+        }
+        
+    }
+    
+    
 ?>

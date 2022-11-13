@@ -46,7 +46,11 @@
 <?php
    require_once 'EmpService.class.php';
    require_once 'PageItem.class.php';
-
+   
+   require_once 'record.php';
+   
+   checkUserValidate();
+   
    $empService= new EmpService();
    
 //    if(!empty($_GET['flag'])){

@@ -2,7 +2,7 @@
 
 <?php
  
-
+  
 
   require_once 'AdminService.class.php';
 
@@ -34,7 +34,12 @@
   $adminService= new AdminService();
   
   $name=$adminService->checkAdmin($usrid, $password);
+  
+
+  
   if($name != ""){
+      session_start();
+      $_SESSION['loginUser']=$name;
       header("Location: empManage.php?username=$name");
        exit();        
   }else{
