@@ -9,7 +9,7 @@
        public $host="localhost";
        public $dbname="empManage";
        public $username="root";
-       public $password="236440Wf!";
+       public $password="********";
        
        public function __construct(){
            $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
