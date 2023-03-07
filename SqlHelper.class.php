@@ -6,15 +6,15 @@
         
         
        public $conn;
-       public $host="localhost";
+       public $host="localhost:3306";
        public $dbname="empManage";
        public $username="root";
-       public $password="********";
+       public $password="236440Wf!";
        
        public function __construct(){
            $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->dbname);
            if(!$this->conn){
-               die("连接失败".mysqli_error());
+               die("连接失败".mysqli_connect_errno());
           
                echo "Error: Unable to connect to MySQL." . PHP_EOL;
                echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;

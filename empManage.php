@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>员工信息管理系统</title>
+  <title>employees info</title>
   <style type="text/css">
     *{ margin: 0; padding: 0; }
     .mainContainer{ width: 1140px; margin: 0 auto; text-align: center; margin-top: 40px; }
@@ -43,12 +43,12 @@
 ?>
 <body>
 
-    <h1>系统主界面</h1>
+    <h1>System Main Desktop</h1>
  
-      <a href="empList.php" target="_self">管理用户</a><br />
-      <a href="addEmp.php" target="_self">添加用户</a><br />
-      <a href="#" target="_self">查询用户</a><br />
-      <a href="#" target="_self">退出系统</a><br />
+      <a href="empList.php" target="_self">MANAGE USER</a><br />
+      <a href="addEmp.php" target="_self">ADD USER</a><br />
+      <a href="#" target="_self">QUERY</a><br />
+      <a href="#" target="_self">EXIT</a><br />
 
 <hr/> 
 <img src="./images/hello.png" width="16%"/>
